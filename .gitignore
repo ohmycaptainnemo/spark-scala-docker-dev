@@ -1,6 +1,52 @@
-*.class
-*.tasty
-*.log
+# =========================
+# Scala / Metals / Bloop
+# =========================
+.bloop/
+.metals/
+.bsp/
+project/project/
+project/target/
+.scala_dependencies
+.ammonite/
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# =========================
+# Maven
+# =========================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# NOTE: .mvn/jvm.config is intentionally NOT ignored so Java 17 flags are committed.
+
+# =========================
+# Apache Spark
+# =========================
+spark-warehouse/
+metastore_db/
+derby.log
+checkpoint/
+*.parquet
+*.snappy.parquet
+*.crc
+
+# =========================
+# VS Code / Local IDE
+# =========================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# =========================
+# OS / System Artifacts
+# =========================
+*.log
+.DS_Store
+Thumbs.db

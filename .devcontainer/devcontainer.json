@@ -1,0 +1,21 @@
+{
+  "name": "Spark & Scala Development Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "metals.suggestLatestUpgrade": "off"
+      },
+      "extensions": [
+        "scalameta.metals",
+        "scala-lang.scala",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-maven"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/scaffold.sh"
+}
