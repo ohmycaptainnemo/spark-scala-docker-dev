@@ -10,12 +10,36 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        
         <scala.version>2.12.18</scala.version>
         <scala.compat.version>2.12</scala.compat.version>
         <spark.version>3.5.1</spark.version>
+        <jackson.version>2.15.2</jackson.version>
+        
+        <spark.scope>compile</spark.scope>
         
         <exec.mainClass>com.example.spark.App</exec.mainClass>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -28,14 +52,14 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
             <version>${scala.version}</version>
-            <!-- <scope>provided</scope> -->
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_${scala.compat.version}</artifactId>
             <version>${spark.version}</version>
-            </dependency>
+            <scope>${spark.scope}</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.scalatest</groupId>
@@ -123,4 +147,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>cluster-build</id>
+            <properties>
+                <spark.scope>provided</spark.scope>
+            </properties>
+        </profile>
+    </profiles>
 </project>
